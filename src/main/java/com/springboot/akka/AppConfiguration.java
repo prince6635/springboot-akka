@@ -1,6 +1,7 @@
 package com.springboot.akka;
 
 import akka.actor.ActorSystem;
+import com.springboot.akka.actor.NonBlockingSpringAkkaExtension;
 import com.springboot.akka.actor.SpringAkkaExtension;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
@@ -20,14 +21,26 @@ public class AppConfiguration {
     @Autowired
     private ApplicationContext applicationContext;
 
+    /* for blocking one, need to change it back when switch to SpringAkkaExtension.
     @Autowired
     private SpringAkkaExtension springAkkaExtension;
 
-    @Bean
     public ActorSystem actorSystem() {
         ActorSystem actorSystem = ActorSystem.create(
                 "demo-actor-system", akkaConfiguration());
         springAkkaExtension.initialize(applicationContext);
+        return actorSystem;
+    }*/
+
+    // for non-blocking one
+    @Autowired
+    private NonBlockingSpringAkkaExtension nonBlockingSpringAkkaExtension;
+
+    @Bean(destroyMethod = "shutdown")
+    public ActorSystem actorSystem() {
+        ActorSystem actorSystem = ActorSystem.create(
+                "demo-actor-system", akkaConfiguration());
+        nonBlockingSpringAkkaExtension.initialize(applicationContext);
         return actorSystem;
     }
 
