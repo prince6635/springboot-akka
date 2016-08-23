@@ -21,6 +21,9 @@ public class NonBlockingAkkaController {
     private NonBlockingWorkerActorService nonBlockingWorkerActorService;
 
     /*
+    * Finally in the NonBlockingAkkaController method the CompletableFuture is converted to a DeferredResult.
+    * */
+    /*
     * Logs:
     08/23 16:29:09.714 INFO [http-nio-8866-exec-1] c.s.a.s.NonBlockingWorkerActorService - Sender: Actor[akka://demo-actor-system/user/sender-worker-actor#-1324325052]
     08/23 16:29:09.714 INFO [http-nio-8866-exec-1] c.s.a.s.NonBlockingWorkerActorService - Receiver: Actor[akka://demo-actor-system/user/receiver-worker-actor#-496742796]

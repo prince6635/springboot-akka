@@ -23,10 +23,8 @@
 
 * NOTE
     * akka logger
-    ```
-    http://stackoverflow.com/questions/14149798/akka-slf4j-logback-configuration-and-usage
-    http://nidkil.me/2014/11/06/classnotfoundexception-when-adding-slf4j-to-akka/
-    ```
+        * http://stackoverflow.com/questions/14149798/akka-slf4j-logback-configuration-and-usage
+        * http://nidkil.me/2014/11/06/classnotfoundexception-when-adding-slf4j-to-akka/
     * errors
         * Error : "Usage of API documented as @since 1.7+..", 
         http://stackoverflow.com/questions/37787079/intellij-unable-to-use-newer-java-8-classes-error-usage-of-api-documented

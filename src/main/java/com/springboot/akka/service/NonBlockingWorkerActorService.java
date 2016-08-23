@@ -22,6 +22,11 @@ public class NonBlockingWorkerActorService {
     @Autowired
     private NonBlockingSpringAkkaExtension nonBlockingSpringAkkaExtension;
 
+    /*
+    * In the NonBlockingWorkerActorService method the NonBlockingWorkerActor is created with an incomplete CompletableFuture as a constructor parameter.
+    * Notice how the Spring prototype-scope actor is injected into the singleton-scope CompletableFutureService.
+    * Then a Message is sent to the NonBlockingWorkerActor with the tell method.
+    * */
     public CompletableFuture<Message> get(String payload, Long id) {
         CompletableFuture<Message> future = new CompletableFuture<>();
         ActorRef senderWorkerActor = actorSystem.actorOf(nonBlockingSpringAkkaExtension.props("nonBlockingWorkerActor", future), "sender-worker-actor");

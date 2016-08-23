@@ -22,6 +22,13 @@ public class NonBlockingWorkerActor extends UntypedActor {
         this.future = future;
     }
 
+    /*
+    * The NonBlockingWorkerActor immediately completes the CompletableFuture, but in real applications here can be more complicated interaction between actors.
+    * Notice that at the end of the onReceive method the NonBlockingWorkerActor is destroyed.
+    * It’s not an issue because creating and destroying of actors is a cheap operation
+    * (should the actor be saved or destroyed and recreated again depends on the actors’ supervision strategy in the application).
+    *
+    * */
     @Override
     public void onReceive(Object message) throws Exception {
         String senderToReceiver = getSender() + "->" + getSelf();
